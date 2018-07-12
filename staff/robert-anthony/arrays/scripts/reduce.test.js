@@ -1,27 +1,35 @@
-/*
-function reduce(array, func, initial) {
-  var accumulator = initial || 0;
-  for (var i = 0; i < array.length; i++) {
-    func(accumulator,array[i]);
-  }
-  return accumulator;
-}
-*/
+// test 1
+console.log("reduce Test");
+var numbers = [1, 2, 3, 4, 5];
 
-var numbersArr = [1, 2, 3];
-var stringsArr = ["hi", "there", "what"];
+var sum = reduce(numbers, function(accum, number) {
+  return accum + number;
+}, 0);
 
-console.log(reduce(numbersArr, function (accumulator, current) {
-  console.log(accumulator,current)
-  return accumulator + current * 2
-}, 0) === 12);
+console.log(sum === 15);
 
+// test 2
 
-console.log(reduce(stringsArr, function (accumulator, current) {
-  console.log(accumulator,current)
-  return accumulator + " " + current.toUpperCase();
-}, "Well yes,") === "Well yes, HI THERE WHAT");
+var words = ['hello', 'world', 'hola', 'mundo', 'hallo', 'welt', 'ciao', 'mondo'];
 
+var numberOfWordsWithL = reduce(words, function(accum, word) {
+  if (word.indexOf('l') > -1) accum++;
 
+  return accum;
+}, 0);
 
+console.log(numberOfWordsWithL === 5);
 
+// test 3
+
+var cart = [
+  { product: 't-shirt', price: 10 },
+  { product: 'shoes', price: 30 },
+  { product: 'shorts', price: 20 }
+];
+
+var total = reduce(cart, function(accum, product) {
+  return accum + product.price;
+}, 0);
+
+console.log(total === 60);
